@@ -1,0 +1,383 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+* {
+    box-sizing: border-box;
+}
+
+body {
+    overflow-x: hidden;
+    font-family: 'Barlow', sans-serif;
+    font-size: 1.125rem;
+    line-height: 1.6;
+    color: #8d8d8d;
+    background-color: #fff;
+}
+
+a {
+    color: #8d8d8d;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #232323;
+}
+
+nav {
+    position: relative;
+    z-index: 2;
+    padding: 1.25rem 0;
+}
+
+nav ul {
+    line-height: 2.2;
+    display: flex;
+    justify-content: flex-start;
+    list-style: none;
+}
+
+nav ul li {
+    margin: 0.325 0;
+}
+
+#logo {
+    color: #232323;
+    font-weight: 700;
+    font-size: 1.125rem;
+}
+
+#hgi {
+    color: blue;
+}
+
+img {
+    width: 100%;
+    height: 43vh;
+    object-fit: cover;
+}
+
+
+/* h1 tepadagi yozuv */
+
+.intro {
+    position: relative;
+    z-index: 2;
+    opacity: 0;
+    animation: fadeIn .8s .4s ease forwards;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+
+/* intro title */
+
+ul {
+    list-style: none;
+}
+
+.intro .title {
+    display: inline-block;
+    font-size: 2rem;
+    font-weight: 500;
+    line-height: 1.1;
+    text-decoration: underline;
+    color: #e83f43;
+}
+
+.intro .title .underline {
+    color: #232323;
+}
+
+.description {
+    position: relative;
+    z-index: 1;
+    margin: 1rem 0 1.5rem 0;
+    font-size: 1rem;
+    opacity: 0;
+    animation: fadeIn .8s .6s ease forwards;
+}
+
+
+/* slider-item -> <li> lar */
+
+.slider-item {
+    display: none;
+}
+
+.slider-item.active {
+    display: block;
+}
+
+
+/* hide-mobile va show-mobile-> active ichidagi lar */
+
+.slider-item.active .hide-mobile {
+    display: none;
+    margin: 1rem 0;
+}
+
+.slider-item.active .show-mobile {
+    display: block;
+}
+
+
+/* buttons */
+
+button {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    outline: none;
+    bottom: 0;
+    vertical-align: middle;
+    text-decoration: none;
+    background: transparent;
+    margin: 0;
+    padding: 0;
+    font-size: 100%;
+    font: inherit;
+    width: 55px;
+    height: 55px;
+}
+
+
+/* contorls */
+
+.controls {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: flex-end;
+    padding: 0.25rem 0;
+}
+
+.controls.previous {
+    border: 1px solid #232323;
+}
+
+.controls.next {
+    border: 1px solid #232323;
+    border-left: none;
+}
+
+
+/* controls icon yasash */
+
+.icon {
+    position: relative;
+    margin: auto;
+    width: 20px;
+    height: 1px;
+    background-color: currentColor;
+}
+
+.arrow-left::before {
+    content: "";
+    position: absolute;
+    left: 1px;
+    top: -4px;
+    width: 9px;
+    height: 9px;
+    border-top: solid 1px currentColor;
+    border-right: solid 1px currentColor;
+    transform: rotate(-135deg);
+}
+
+.arrow-right::before {
+    content: "";
+    position: absolute;
+    right: 1px;
+    top: -4px;
+    width: 9px;
+    height: 9px;
+    border-top: solid 1px currentColor;
+    border-right: solid 1px currentColor;
+    transform: rotate(45deg);
+}
+
+
+/* controls icon ni hover bolgan paytini yasash */
+
+.previous,
+.next {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    flex-basis: 15%;
+    font-size: 2rem;
+    color: #232323;
+}
+
+.visually-hidden {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+}
+
+.previous:hover .icon,
+.next:hover .icon {
+    transform: scale(1.5);
+}
+
+.previous .icon,
+.next .icon {
+    transition: transform .1s ease;
+}
+
+
+/* image animation xolatini chiqaramiz */
+
+.active .image-holder::before {
+    position: absolute;
+    content: "";
+    z-index: 1;
+    display: block;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    transform-origin: 100% 50%;
+    animation: revealRight 1s cubic-bezier(0.23, 1, 0.75, 1) forwards;
+}
+
+@keyframes revealRight {
+    0% {
+        transform: scaleX(1);
+    }
+    100% {
+        transform: scaleX(0);
+    }
+}
+
+
+/* chap tomondagi image animation xolatini chiqaramiz */
+
+@keyframes fadeInfeft {
+    0% {
+        opacity: 0;
+        transform: translateX(20%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+
+/* nav-toggle va flex-nav lar bilan ishlaymiz */
+
+.toggle-nav {
+    display: flex;
+    justify-content: flex-end;
+    font-size: 1rem;
+    line-height: 1.9;
+}
+
+.toggle-nav i {
+    font-size: 1.5rem;
+    line-height: 1.3;
+    margin: 0 0 0 0.5rem;
+}
+
+.flex-nav ul {
+    position: absolute;
+    z-index: 1;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    display: none;
+    width: 100%;
+    left: 0;
+    padding: 1rem;
+    background: #fff;
+    text-align: center;
+}
+
+.flex-nav ul.active {
+    display: flex;
+}
+
+
+/* ekranni katta xolatini yasab olamiz */
+
+@media (min-width:62rem) {
+    nav ul {
+        justify-content: flex-end;
+    }
+    #logo {
+        font-size: 1.25rem;
+    }
+    .controls {
+        padding: 1.75rem 0;
+    }
+    /* fadeInfeft animasiyani opacity sini 1 ga qaytaraniz */
+    .intro {
+        animation: fadeInfeft 0.8s 0.4s ease forwards;
+    }
+    .intro .title {
+        font-size: 4.25rem;
+        padding: 2.5rem 2.5rem 3rem 2.5rem;
+        background: #fff;
+    }
+    img {
+        height: 60vh;
+    }
+    .description {
+        font-size: 1.25rem;
+        margin: 1rem 0 0 0;
+    }
+    .previous,
+    .next {
+        flex-basis: 8.33%;
+    }
+    /* explore yozuvni teparoqqa olib qoyish */
+    .slider-item.active .hide-mobile {
+        display: block;
+        margin: 1rem 0;
+    }
+    .slider-item.active .show-mobile {
+        display: none;
+    }
+    /* toggle-nav ni ochiramiz yani button ni */
+    .toggle-nav {
+        display: none;
+    }
+    /* li larni chiqaramiz */
+    .flex-nav ul {
+        display: flex;
+        flex-direction: row;
+        position: relative;
+        padding: 0;
+        justify-content: flex-end;
+    }
+    /* nav bilan ishlash */
+    nav {
+        padding: 1.75rem 0;
+    }
+    nav ul {
+        line-height: 2.2;
+        display: flex;
+        justify-content: flex-start;
+    }
+    nav ul li {
+        font-size: 1rem;
+        text-transform: uppercase;
+        margin: 0 2rem 0 0;
+    }
+    nav ul li:nth-child(3) {
+        margin: 0;
+    }
+}
